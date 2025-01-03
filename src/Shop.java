@@ -2,16 +2,19 @@
  * The Shop class controls the cost of the items in the Treasure Hunt game.<p>
  * The Shop class also acts as a go between for the Hunter's buyItem() method.<p>
  */
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Shop
 {
     // constants
-    private static final int WATER_COST = 2;
-    private static final int ROPE_COST = 4;
-    private static final int MACHETE_COST = 6;
-    private static final int HORSE_COST = 12;
-    private static final int BOAT_COST = 20;
+    private final int WATER_COST = 2;
+    private final int ROPE_COST = 4;
+    private final int MACHETE_COST = 6;
+    private final int HORSE_COST = 12;
+    private final int BOAT_COST = 20;
+    private final int ITEM_COST = 0;
+    private final String SHOP_INVENTORY = "WaterRopeMacheteHorseBoatItem";
 
     // instance variables
     private double markdown;
@@ -154,25 +157,11 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        if (item.equals("Water"))
+        System.out.println(customer.getKit());
+        if (SHOP_INVENTORY.contains(item))
         {
-            return WATER_COST;
-        }
-        else if (item.equals("Rope"))
-        {
-            return ROPE_COST;
-        }
-        else if (item.equals("Machete"))
-        {
-            return MACHETE_COST;
-        }
-        else if (item.equals("Horse"))
-        {
-            return HORSE_COST;
-        }
-        else if (item.equals("Boat"))
-        {
-            return BOAT_COST;
+            String d = item.toUpperCase();
+            return (d + "_COST");
         }
         else
         {
