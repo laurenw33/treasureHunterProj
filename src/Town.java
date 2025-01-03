@@ -125,6 +125,25 @@ public class Town
         }
     }
 
+    public String huntForTreasure() {
+        double chance = Math.random();
+        double percent = Math.random();
+        int amtGold = (int) (Math.random() * 10) + 1;
+        System.out.println(percent);
+        if (percent > 0.5) {
+            return "You didn't find any treasure!";
+        }
+        else {
+            if (chance > 0.5) {
+                hunter.changeGold(amtGold);
+                return "You found " + amtGold + "gold!";
+            }
+            else {
+                return "You found an item!";
+            }
+        }
+    }
+
     public String toString()
     {
         return "This nice little town is surrounded by " + terrain.getTerrainName() + ".";
