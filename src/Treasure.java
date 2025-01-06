@@ -1,43 +1,85 @@
 public class Treasure {
 
-    private String aTreasure;
-    private String bTreasure;
-    private String cTreasure;
-    private int treasureChance;
-    private boolean t;
+    private int aTreasure;
+    private int bTreasure;
+    private int cTreasure;
+    private int t = 0;
+    private boolean treasureFound;
 
-
-    public Treasure(String royal, String strong, String unique) {
-        this.aTreasure = royal;
-        this.bTreasure = strong;
-        this.cTreasure = unique;
-
-    }
-
-    public void lookingForTreasure() {
-
-
-        if (Math.random() < .5) {
-            treasureChance = 1;
-        } else {
-            treasureChance = 2;
-        }
-
-        if (treasureChance == 1){
-            t = false;
-        }
-        if (treasureChance == 2){
-            t = true;
-
-        }
+    public Treasure() {
+        this.aTreasure = 0;
+        this.bTreasure = 0;
+        this.cTreasure = 0;
+        this.treasureFound = false;
 
     }
 
-    public boolean treasureFound() {
+    public int amtOfTreasure() {
         return t;
     }
 
+    public boolean lookingForTreasure() {
+
+
+        int chance;
+        if (Math.random() < .5) {
+
+            chance = 1;
+
+        } else {
+
+            chance = 2;
+
+        }
+
+        if (chance == 1){
+
+            treasureFound = false;
+
+        }
+        if (chance == 2){
+
+            treasureFound = true;
+            t++;
+            int whichOne = (int) (1 + Math.random() * 3);
+
+            if (whichOne == 1) {
+                aTreasure = 1;
+            }
+
+            if (whichOne == 2) {
+                bTreasure = 1;
+            }
+
+            if (whichOne == 3) {
+                cTreasure = 1;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean treasureFound() {
+        return treasureFound;
+    }
+
     public String congrats() {
-        return "You have found all three unique treasures! Congratulations!";
+        String str = "";
+       if  (aTreasure == 1 && treasureFound) {
+           return str = "You have found this unique treasure. It contains: ." + "\n" +
+                   " Total amount of treasure found: " + t;
+       }
+       if  (bTreasure == 1 && treasureFound) {
+           return str = "You have found this unique treasure. It contains: ." + "\n" +
+                   " Total amount of treasure found: " + t;
+       }
+       if  (cTreasure == 1 && treasureFound) {
+           return str = "You have found this unique treasure. It contains: ." + "\n" +
+                   " Total amount of treasure found: " + t;
+       }
+       if (t == 3) {
+           return str = "You have found all three unique treasures! Congratulations!";
+       }
+        return str;
     }
 }

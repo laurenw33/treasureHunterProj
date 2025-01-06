@@ -11,7 +11,10 @@ public class TreasureHunter
     //Instance variables
     private Town currentTown;
     private Hunter hunter;
+    private Treasure treasure;
     private boolean hardMode;
+    private boolean easyMode;
+    private boolean regularMode;
 
     //Constructor
     /**
@@ -23,6 +26,8 @@ public class TreasureHunter
         currentTown = null;
         hunter = null;
         hardMode = false;
+        easyMode = false;
+        regularMode = false;
     }
 
     // starts the game; this is the only public method
@@ -48,12 +53,31 @@ public class TreasureHunter
         // set hunter instance variable
         hunter = new Hunter(name, 10);
 
-        System.out.print("Hard mode? (y/n): ");
-        String hard = scanner.nextLine();
-        if (hard.equals("y") || hard.equals("Y"))
+        System.out.print("Easy, hard, or regular mode? (e/h/r): ");
+        String mode = scanner.nextLine();
+        if (mode.equalsIgnoreCase("e"))
+        {
+            easyMode = true;
+        }
+        else if (mode.equalsIgnoreCase("h"))
         {
             hardMode = true;
         }
+        else if (mode.equalsIgnoreCase("r")) {
+            regularMode = true;
+        }
+    }
+
+    public boolean isHardMode () {
+        return hardMode;
+    }
+
+    public boolean isEasyMode () {
+        return easyMode;
+    }
+
+    public boolean isRegularMode () {
+        return regularMode;
     }
 
     /**
@@ -63,13 +87,18 @@ public class TreasureHunter
     {
         double markdown = 0.25;
         double toughness = 0.4;
-        if (hardMode)
-        {
+
+        if (hardMode) {
             // in hard mode, you get less money back when you sell items
             markdown = 0.5;
 
             // and the town is "tougher"
             toughness = 0.75;
+        }
+
+        else if (easyMode){
+            markdown = 0.15;
+            toughness = 0.2;
         }
 
         // note that we don't need to access the Shop object
@@ -148,7 +177,10 @@ public class TreasureHunter
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
         else if (choice.equalsIgnoreCase("h")) {
-            System.out.println(currentTown.huntForTreasure());
+            System.out.println(treasure.lookingForTreasure());
+            if (treasure.treasureFound()) {
+                treasure.congrats();
+            }
         }
         else
         {

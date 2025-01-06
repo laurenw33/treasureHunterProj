@@ -9,6 +9,8 @@ public class Town
     private Shop shop;
     private Terrain terrain;
     private String printMessage;
+    private boolean easyTown;
+    private boolean regularTown;
     private boolean toughTown;
 
     //Constructor
@@ -29,7 +31,15 @@ public class Town
         printMessage = "";
 
         // higher toughness = more likely to be a tough town
-        toughTown = (Math.random() < toughness);
+        if (toughness == 0.4) {
+            regularTown = true;
+        }
+        else if (toughness == 0.75) {
+            toughTown = true;
+        }
+        else if (toughness == 0.2) {
+            easyTown = true;
+        }
     }
 
     public String getLatestNews()
@@ -50,9 +60,12 @@ public class Town
         {
             printMessage += "\nIt's pretty rough around here, so watch yourself.";
         }
-        else
+        else if (regularTown)
         {
             printMessage += "\nWe're just a sleepy little town with mild mannered folk.";
+        }
+        else if (easyTown) {
+            printMessage += "\nIt's a quiet town with a polite community.";
         }
     }
 
@@ -131,12 +144,12 @@ public class Town
         int amtGold = (int) (Math.random() * 10) + 1;
         System.out.println(percent);
         if (percent > 0.5) {
-            return "You didn't find any treasure!";
+            return "You didn't find any treasure! \n ***";
         }
         else {
             if (chance > 0.5) {
                 hunter.changeGold(amtGold);
-                return "You found " + amtGold + "gold!";
+                return "You found " + amtGold + " gold!";
             }
             else {
                 return "You found an item!";
