@@ -11,6 +11,7 @@ public class TreasureHunter
     //Instance variables
     private Town currentTown;
     private Hunter hunter;
+    private Treasure treasure;
     private boolean hardMode;
     private boolean easyMode;
     private boolean regularMode;
@@ -176,7 +177,10 @@ public class TreasureHunter
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
         else if (choice.equalsIgnoreCase("h")) {
-            System.out.println(currentTown.huntForTreasure());
+            System.out.println(treasure.lookingForTreasure());
+            if (treasure.treasureFound()) {
+                treasure.congrats();
+            }
         }
         else
         {
