@@ -131,12 +131,12 @@ public class Town
         int amtGold = (int) (Math.random() * 10) + 1;
         System.out.println(percent);
         if (percent > 0.5) {
-            return "You didn't find any treasure!";
+            return "You didn't find any treasure! \n ***";
         }
         else {
             if (chance > 0.5) {
                 hunter.changeGold(amtGold);
-                return "You found " + amtGold + "gold!";
+                return "You found " + amtGold + " gold!";
             }
             else {
                 return "You found an item!";

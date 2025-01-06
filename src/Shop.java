@@ -161,7 +161,7 @@ public class Shop
         if (SHOP_INVENTORY.contains(item))
         {
             String d = item.toUpperCase();
-            return (d + "_COST");
+            // return (d + "_COST");
         }
         else
         {
