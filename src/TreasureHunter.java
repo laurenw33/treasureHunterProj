@@ -51,7 +51,6 @@ public class TreasureHunter
         String name = scanner.nextLine();
 
         // set hunter instance variable
-        hunter = new Hunter(name, 10);
 
         System.out.print("Easy, hard, or regular mode? (e/h/r): ");
         String mode = scanner.nextLine();
@@ -66,6 +65,15 @@ public class TreasureHunter
         else if (mode.equalsIgnoreCase("r")) {
             regularMode = true;
         }
+
+        hunter = new Hunter(name, 15);
+        if (easyMode) {
+            hunter = new Hunter(name, 20);
+        }
+        else if (hardMode) {
+            hunter = new Hunter(name, 10);
+        }
+
     }
 
     public boolean isHardMode () {
