@@ -31,14 +31,14 @@ public class Town
         printMessage = "";
 
         // higher toughness = more likely to be a tough town
-        if (TreasureHunter.isEasyMode()) {
-            easyTown = true;
-        }
-        else if (TreasureHunter.isRegularMode()) {
+        if (toughness == 0.4) {
             regularTown = true;
         }
-        else if (TreasureHunter.isHardMode()) {
+        else if (toughness == 0.75) {
             toughTown = true;
+        }
+        else if (toughness == 0.2) {
+            easyTown = true;
         }
     }
 
@@ -60,9 +60,12 @@ public class Town
         {
             printMessage += "\nIt's pretty rough around here, so watch yourself.";
         }
-        else
+        else if (regularTown)
         {
             printMessage += "\nWe're just a sleepy little town with mild mannered folk.";
+        }
+        else if (easyTown) {
+            printMessage += "\nIt's a quiet town with a polite community.";
         }
     }
 
