@@ -9,6 +9,8 @@ public class Town
     private Shop shop;
     private Terrain terrain;
     private String printMessage;
+    private boolean easyTown;
+    private boolean regularTown;
     private boolean toughTown;
 
     //Constructor
@@ -29,7 +31,15 @@ public class Town
         printMessage = "";
 
         // higher toughness = more likely to be a tough town
-        toughTown = (Math.random() < toughness);
+        if (TreasureHunter.isEasyMode()) {
+            easyTown = true;
+        }
+        else if (TreasureHunter.isRegularMode()) {
+            regularTown = true;
+        }
+        else if (TreasureHunter.isHardMode()) {
+            toughTown = true;
+        }
     }
 
     public String getLatestNews()
