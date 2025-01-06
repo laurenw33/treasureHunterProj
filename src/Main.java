@@ -4,5 +4,6 @@ public class Main
     {
         TreasureHunter game = new TreasureHunter();
         game.play();
+
     }
 }

@@ -2,19 +2,26 @@
  * The Shop class controls the cost of the items in the Treasure Hunt game.<p>
  * The Shop class also acts as a go between for the Hunter's buyItem() method.<p>
  */
+import com.sun.jdi.IntegerValue;
+
+import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Shop
 {
     // constants
-    private final int WATER_COST = 2;
-    private final int ROPE_COST = 4;
-    private final int MACHETE_COST = 6;
-    private final int HORSE_COST = 12;
-    private final int BOAT_COST = 20;
+    private HashMap<String, Integer> costMap;
+    private final static int WATER_COST = 2;
+    private final static int ROPE_COST = 4;
+    private final static int MACHETE_COST = 6;
+    private final static int HORSE_COST = 12;
+    private final static int BOAT_COST = 20;
     private final int ITEM_COST = 0;
-    private final String SHOP_INVENTORY = "WaterRopeMacheteHorseBoatItem";
+    private final static String SHOP_INVENTORY = "WaterRopeMacheteHorseBoatItem";
 
     // instance variables
     private double markdown;
@@ -25,6 +32,13 @@ public class Shop
     {
         this.markdown = markdown;
         customer = null;
+        costMap = new HashMap<String, Integer>();
+        costMap.put("water", 2);
+        costMap.put("rope", 4);
+        costMap.put("machete", 6);
+        costMap.put("horse", 12);
+        costMap.put("boat", 20);
+
     }
 
     /** method for entering the shop
@@ -157,14 +171,10 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        System.out.println(customer.getKit());
-        if (SHOP_INVENTORY.contains(item))
-        {
-            String d = item.toUpperCase();
-            return (d + "_COST");
+        if (SHOP_INVENTORY.contains(item)){
+            return costMap.get(item);
         }
-        else
-        {
+        else {
             return 0;
         }
     }
