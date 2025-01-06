@@ -18,7 +18,7 @@ public class Treasure {
         return t;
     }
 
-    public void lookingForTreasure() {
+    public boolean lookingForTreasure() {
 
 
         int chance;
@@ -56,6 +56,7 @@ public class Treasure {
             }
         }
 
+        return false;
     }
 
     public boolean treasureFound() {
