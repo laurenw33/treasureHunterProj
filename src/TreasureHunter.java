@@ -191,6 +191,7 @@ public class TreasureHunter
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
         else if (choice.equalsIgnoreCase("h")) {
+            treasure.lookingForTreasure();
             treasure.congrats();
 
         }
