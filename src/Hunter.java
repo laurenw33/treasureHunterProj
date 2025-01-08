@@ -50,6 +50,10 @@ public class Hunter
         }
     }
 
+    public void updateGold(int amt) {
+        gold = amt;
+    }
+
     /**
      * Buys an item from a shop.
      *

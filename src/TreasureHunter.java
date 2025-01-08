@@ -15,7 +15,8 @@ public class TreasureHunter
     private boolean hardMode;
     private boolean easyMode;
     private boolean regularMode;
-
+    public TreasureHunter treasureHunter;
+    Scanner scanner = new Scanner(System.in);
     //Constructor
     /**
      * Constructs the Treasure Hunter game.
@@ -51,7 +52,6 @@ public class TreasureHunter
         String name = scanner.nextLine();
 
         // set hunter instance variable
-        hunter = new Hunter(name, 10);
 
         System.out.print("Easy, hard, or regular mode? (e/h/r): ");
         String mode = scanner.nextLine();
@@ -66,6 +66,15 @@ public class TreasureHunter
         else if (mode.equalsIgnoreCase("r")) {
             regularMode = true;
         }
+
+        hunter = new Hunter(name, 15);
+        if (easyMode) {
+            hunter = new Hunter(name, 20);
+        }
+        else if (hardMode) {
+            hunter = new Hunter(name, 10);
+        }
+
     }
 
     public boolean isHardMode () {
@@ -125,7 +134,7 @@ public class TreasureHunter
      */
     private void showMenu()
     {
-        Scanner scanner = new Scanner(System.in);
+
         String choice = "";
 
         while (!(choice.equals("X") || choice.equals("x")))
@@ -140,6 +149,7 @@ public class TreasureHunter
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
             System.out.println("(H)unt for treasure!");
+            System.out.println("(C)asino!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -180,6 +190,15 @@ public class TreasureHunter
             System.out.println(treasure.lookingForTreasure());
             if (treasure.treasureFound()) {
                 treasure.congrats();
+            }
+        }
+        else if (choice.equalsIgnoreCase("c")) {
+            int n = hunter.getGold();
+            if (n > 1) {
+                currentTown.casino();
+            }
+            else {
+                System.out.println("You do not have enough money!");
             }
         }
         else
