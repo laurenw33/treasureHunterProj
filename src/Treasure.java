@@ -3,9 +3,10 @@ public class Treasure {
     private int aTreasure;
     private int bTreasure;
     private int cTreasure;
+
     private int t = 0;
     private boolean treasureFound;
-    private String treasure;
+
 
     private Hunter inv;
 
@@ -14,7 +15,6 @@ public class Treasure {
         this.bTreasure = 0;
         this.cTreasure = 0;
         this.treasureFound = false;
-        this.treasure = "Treasure Chest";
 
     }
 
@@ -36,11 +36,13 @@ public class Treasure {
 
             treasureFound = true;
             t++;
+
             int whichOne = (int) (1 + Math.random() * 3);
 
             if (whichOne == 1) {
                 aTreasure = 1;
                 treasureFound = false;
+
             }
 
             if (whichOne == 2) {
