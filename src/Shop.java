@@ -15,12 +15,6 @@ public class Shop
 {
     // constants
     private HashMap<String, Integer> costMap;
-    private final static int WATER_COST = 2;
-    private final static int ROPE_COST = 4;
-    private final static int MACHETE_COST = 6;
-    private final static int HORSE_COST = 12;
-    private final static int BOAT_COST = 20;
-    private final int ITEM_COST = 0;
     private final static String SHOP_INVENTORY = "WaterRopeMacheteHorseBoatItem";
 
     // instance variables
@@ -102,11 +96,11 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = "Water: " + costMap.get("water") + " gold\n";
+        str += "Rope: " + costMap.get("rope") + " gold\n";
+        str += "Machete: " + costMap.get("machete") + " gold\n";
+        str += "Horse: " + costMap.get("horse") + " gold\n";
+        str += "Boat: " + costMap.get("boat") + " gold\n";
 
         return str;
     }
@@ -171,12 +165,12 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        if (SHOP_INVENTORY.contains(item)){
-            return costMap.get(item);
+        int temp = 0;
+        try{
+            temp = costMap.get(item);
+        } catch (NullPointerException e) {
         }
-        else {
-            return 0;
-        }
+        return temp;
     }
 
     /**
