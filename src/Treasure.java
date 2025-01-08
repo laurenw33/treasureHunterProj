@@ -69,24 +69,24 @@ public class Treasure {
 
     public void congrats() {
 
-       if  (aTreasure == 1) {
-           System.out.println("You have found this unique treasure. It contains: ." + "\n" +
-                   " Total amount of treasure found: " + t);
-           aTreasure = 0;
-       }
-       if  (bTreasure == 1) {
-           System.out.println("You have found this unique treasure. It contains: ." + "\n" +
-                   " Total amount of treasure found: " + t);
-           bTreasure = 0;
-       }
-       if  (cTreasure == 1) {
-           System.out.println("You have found this unique treasure. It contains: ." + "\n" +
-                   " Total amount of treasure found: " + t);
-           cTreasure = 0;
-       }
-       if (t == 3) {
-           System.out.println("You have found all three unique treasures! Congratulations!");
-       }
+        if  (aTreasure == 1) {
+            System.out.println("You have found this unique treasure. It contains: ." + "\n" +
+                    " Total amount of treasure found: " + t);
+            aTreasure = 0;
+        }
+        if  (bTreasure == 1) {
+            System.out.println("You have found this unique treasure. It contains: ." + "\n" +
+                    " Total amount of treasure found: " + t);
+            bTreasure = 0;
+        }
+        if  (cTreasure == 1) {
+            System.out.println("You have found this unique treasure. It contains: ." + "\n" +
+                    " Total amount of treasure found: " + t);
+            cTreasure = 0;
+        }
+        if (t == 3) {
+            System.out.println("You have found all three unique treasures! Congratulations!");
+        }
 
     }
 }
