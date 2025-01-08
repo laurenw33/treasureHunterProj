@@ -15,6 +15,7 @@ public class TreasureHunter
     private static boolean hardMode;
     private static boolean easyMode;
     private static boolean regularMode;
+    private static boolean crazy;
     public TreasureHunter treasureHunter;
     Scanner scanner = new Scanner(System.in);
     //Constructor
@@ -30,6 +31,7 @@ public class TreasureHunter
         hardMode = false;
         easyMode = false;
         regularMode = false;
+        crazy = false;
     }
 
     // starts the game; this is the only public method
@@ -54,7 +56,7 @@ public class TreasureHunter
 
         // set hunter instance variable
 
-        System.out.print("Easy, hard, or regular mode? (e/h/r): ");
+        System.out.print("Easy, hard, or regular mode? (e/h/r/c): ");
         String mode = scanner.nextLine();
         if (mode.equalsIgnoreCase("e"))
         {
@@ -66,6 +68,9 @@ public class TreasureHunter
         }
         else if (mode.equalsIgnoreCase("r")) {
             regularMode = true;
+        }
+        else if (mode.equalsIgnoreCase("c")) {
+            crazy = true;
         }
 
         hunter = new Hunter(name, 15);
@@ -109,6 +114,16 @@ public class TreasureHunter
         else if (easyMode){
             markdown = 0.15;
             toughness = 0.2;
+        }
+
+        else if (regularMode) {
+            markdown = 0.35;
+            toughness = .45;
+        }
+
+        else if (crazy) {
+            markdown = .00001;
+            toughness = .0000001;
         }
 
         // note that we don't need to access the Shop object

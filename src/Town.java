@@ -14,6 +14,7 @@ public class Town
     private boolean easyTown;
     private boolean regularTown;
     private boolean toughTown;
+    private boolean crazy;
 
     //Constructor
     /**
@@ -42,6 +43,9 @@ public class Town
         else if (toughness == 0.2) {
             easyTown = true;
         }
+        else if (toughness < 1) {
+            crazy = true;
+        }
     }
 
     public String getLatestNews()
@@ -68,6 +72,10 @@ public class Town
         }
         else if (easyTown) {
             printMessage += "\nIt's a quiet town with a polite community.";
+        }
+
+        else if (crazy) {
+            printMessage += "\nHave an easy breezy time.";
         }
     }
 
