@@ -2,19 +2,20 @@
  * The Shop class controls the cost of the items in the Treasure Hunt game.<p>
  * The Shop class also acts as a go between for the Hunter's buyItem() method.<p>
  */
+import com.sun.jdi.IntegerValue;
+
+import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Shop
 {
     // constants
-    private final int WATER_COST = 2;
-    private final int ROPE_COST = 4;
-    private final int MACHETE_COST = 6;
-    private final int HORSE_COST = 12;
-    private final int BOAT_COST = 20;
-    private final int ITEM_COST = 0;
-    private final String SHOP_INVENTORY = "WaterRopeMacheteHorseBoatItem";
+    private HashMap<String, Integer> costMap;
+    private final static String SHOP_INVENTORY = "WaterRopeMacheteHorseBoatItem";
 
     // instance variables
     private double markdown;
@@ -25,6 +26,13 @@ public class Shop
     {
         this.markdown = markdown;
         customer = null;
+        costMap = new HashMap<String, Integer>();
+        costMap.put("water", 2);
+        costMap.put("rope", 4);
+        costMap.put("machete", 6);
+        costMap.put("horse", 12);
+        costMap.put("boat", 20);
+
     }
 
     /** method for entering the shop
@@ -88,11 +96,11 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = "Water: " + costMap.get("water") + " gold\n";
+        str += "Rope: " + costMap.get("rope") + " gold\n";
+        str += "Machete: " + costMap.get("machete") + " gold\n";
+        str += "Horse: " + costMap.get("horse") + " gold\n";
+        str += "Boat: " + costMap.get("boat") + " gold\n";
 
         return str;
     }
@@ -157,16 +165,12 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        System.out.println(customer.getKit());
-        if (SHOP_INVENTORY.contains(item))
-        {
-            String d = item.toUpperCase();
-            // return (d + "_COST");
+        int temp = 0;
+        try{
+            temp = costMap.get(item);
+        } catch (NullPointerException e) {
         }
-        else
-        {
-            return 0;
-        }
+        return temp;
     }
 
     /**
