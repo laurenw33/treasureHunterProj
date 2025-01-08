@@ -12,9 +12,9 @@ public class TreasureHunter
     private Town currentTown;
     private Hunter hunter;
     private Treasure treasure;
-    private boolean hardMode;
-    private boolean easyMode;
-    private boolean regularMode;
+    private static boolean hardMode;
+    private static boolean easyMode;
+    private static boolean regularMode;
     public TreasureHunter treasureHunter;
     Scanner scanner = new Scanner(System.in);
     //Constructor
@@ -26,6 +26,7 @@ public class TreasureHunter
         // these will be initialized in the play method
         currentTown = null;
         hunter = null;
+        treasure = null;
         hardMode = false;
         easyMode = false;
         regularMode = false;
@@ -77,15 +78,15 @@ public class TreasureHunter
 
     }
 
-    public boolean isHardMode () {
+    public static boolean isHardMode() {
         return hardMode;
     }
 
-    public boolean isEasyMode () {
+    public static boolean isEasyMode() {
         return easyMode;
     }
 
-    public boolean isRegularMode () {
+    public static boolean isRegularMode() {
         return regularMode;
     }
 
@@ -125,6 +126,9 @@ public class TreasureHunter
         // constructor for Town, but this illustrates another way to associate
         // an object with an object of a different class
         currentTown.hunterArrives(hunter);
+
+        treasure = new Treasure();
+
     }
 
     /**
@@ -187,10 +191,8 @@ public class TreasureHunter
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }
         else if (choice.equalsIgnoreCase("h")) {
-            System.out.println(treasure.lookingForTreasure());
-            if (treasure.treasureFound()) {
-                treasure.congrats();
-            }
+            treasure.congrats();
+
         }
         else if (choice.equalsIgnoreCase("c")) {
             int n = hunter.getGold();
