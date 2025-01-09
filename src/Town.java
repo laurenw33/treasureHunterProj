@@ -12,7 +12,7 @@ public class Town
     private boolean easyTown;
     private boolean regularTown;
     private boolean toughTown;
-    private boolean crazy;
+    private boolean crazyTown;
 
     //Constructor
     /**
@@ -42,7 +42,7 @@ public class Town
             easyTown = true;
         }
         else if (toughness < 1) {
-            crazy = true;
+            crazyTown = true;
         }
     }
 
@@ -72,7 +72,7 @@ public class Town
             printMessage += "\nIt's a quiet town with a polite community.";
         }
 
-        else if (crazy) {
+        else if (crazyTown) {
             printMessage += "\nHave an easy breezy time.";
         }
     }
@@ -134,6 +134,12 @@ public class Town
             if (Math.random() > noTroubleChance)
             {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
+                printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
+                hunter.changeGold(goldDiff);
+            }
+            else if (crazyTown) {
+                goldDiff = 100;
+                printMessage += "Dang, you must be real special stranger! I'm honored to fight a gem like you. Here, take all my dice and skedaddle.";
                 printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
                 hunter.changeGold(goldDiff);
             }
