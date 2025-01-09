@@ -44,7 +44,7 @@ public class Town
         else if (toughness == 0.2) {
             easyTown = true;
         }
-        else if (toughness < 1) {
+        else if (toughness == 1) {
             crazyTown = true;
         }
     }
@@ -126,7 +126,7 @@ public class Town
             noTroubleChance = 0.15;
         }
         else if (crazyTown) {
-            noTroubleChance = 0;
+            noTroubleChance = 1;
         }
         else {
             noTroubleChance = 0.33;

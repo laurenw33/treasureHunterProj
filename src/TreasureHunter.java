@@ -126,8 +126,8 @@ public class TreasureHunter
         }
 
         else if (crazy) {
-            markdown = 0.00001;
-            toughness = 0.0000001;
+            markdown = .05;
+            toughness = 1;
         }
 
         // note that we don't need to access the Shop object
