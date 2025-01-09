@@ -12,10 +12,10 @@ public class TreasureHunter
     private Town currentTown;
     private Hunter hunter;
     private Treasure treasure;
-    private static boolean hardMode;
-    private static boolean easyMode;
-    private static boolean regularMode;
-    private static boolean crazy;
+    private boolean hardMode;
+    private boolean easyMode;
+    private boolean regularMode;
+    private boolean crazy;
     public TreasureHunter treasureHunter;
     Scanner scanner = new Scanner(System.in);
     //Constructor
@@ -56,7 +56,7 @@ public class TreasureHunter
 
         // set hunter instance variable
 
-        System.out.print("Easy, hard, or regular mode? (e/h/r/c): ");
+        System.out.print("Easy, hard, or regular mode? (e/h/r): ");
         String mode = scanner.nextLine();
         if (mode.equalsIgnoreCase("e"))
         {
@@ -83,15 +83,15 @@ public class TreasureHunter
 
     }
 
-    public static boolean isHardMode() {
+    public boolean isHardMode() {
         return hardMode;
     }
 
-    public static boolean isEasyMode() {
+    public boolean isEasyMode() {
         return easyMode;
     }
 
-    public static boolean isRegularMode() {
+    public boolean isRegularMode() {
         return regularMode;
     }
 
