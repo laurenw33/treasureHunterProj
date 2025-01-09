@@ -121,8 +121,14 @@ public class Town
         {
             noTroubleChance = 0.66;
         }
-        else
+        else if (easyTown)
         {
+            noTroubleChance = 0.15;
+        }
+        else if (crazyTown) {
+            noTroubleChance = 0;
+        }
+        else {
             noTroubleChance = 0.33;
         }
 
@@ -143,6 +149,12 @@ public class Town
             else if (crazyTown) {
                 goldDiff = 100;
                 printMessage += "Dang, you must be real special stranger! I'm honored to fight a gem like you. Here, take all my dice and skedaddle.";
+                printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
+                hunter.changeGold(goldDiff);
+            }
+            else if (easyTown) {
+                goldDiff = ((int)(Math.random() * 10) + 1) * 3;
+                printMessage += "Alrighty stranger! Yer tuff huh. Here, I'm feelin' a bit nice today.";
                 printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
                 hunter.changeGold(goldDiff);
             }
