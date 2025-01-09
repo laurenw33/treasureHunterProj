@@ -221,7 +221,7 @@ public class TreasureHunter
                 else {
                     System.out.print("Please choose a number between 1-12. ");
                     int num = scanner.nextInt();
-                    currentTown.casino(num, amt);
+                    currentTown.LuckyDice(num, amt);
                 }
             }
             else {
