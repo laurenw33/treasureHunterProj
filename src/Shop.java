@@ -20,18 +20,30 @@ public class Shop
     // instance variables
     private double markdown;
     private Hunter customer;
+    private TreasureHunter cheatMode;
 
     //Constructor
     public Shop(double markdown)
     {
         this.markdown = markdown;
         customer = null;
+        cheatMode =null;
         costMap = new HashMap<String, Integer>();
         costMap.put("water", 2);
         costMap.put("rope", 4);
         costMap.put("machete", 6);
         costMap.put("horse", 12);
         costMap.put("boat", 20);
+
+        cheatMode = new TreasureHunter();
+
+        if (cheatMode.isCrazyMode()) {
+            costMap.put("water", 1);
+            costMap.put("rope", 1);
+            costMap.put("machete", 1);
+            costMap.put("horse", 1);
+            costMap.put("boat", 1);
+        }
 
     }
 
