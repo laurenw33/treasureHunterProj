@@ -126,8 +126,8 @@ public class TreasureHunter
         }
 
         else if (crazy) {
-            markdown = .00001;
-            toughness = .0000001;
+            markdown = 0.00001;
+            toughness = 0.0000001;
         }
 
         // note that we don't need to access the Shop object
@@ -212,6 +212,7 @@ public class TreasureHunter
         else if (choice.equalsIgnoreCase("h")) {
             treasure.lookingForTreasure();
             treasure.congrats();
+
 
         }
         else if (choice.equalsIgnoreCase("c")) {

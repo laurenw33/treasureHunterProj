@@ -8,7 +8,6 @@ public class Treasure {
     private boolean treasureFound;
 
 
-    private Hunter inv;
     private Town currentTown;
 
     public Treasure() {
@@ -16,6 +15,8 @@ public class Treasure {
         this.bTreasure = 0;
         this.cTreasure = 0;
         this.treasureFound = false;
+
+
 
     }
 
@@ -64,11 +65,8 @@ public class Treasure {
         return treasureFound;
     }
 
-    public void addToInventory(String item)
-    {
 
 
-    }
 
 
     public void congrats() {

@@ -12,6 +12,7 @@ public class Hunter
     private String kit;
     private int gold;
 
+    private Treasure a;
     //Constructor
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -23,6 +24,8 @@ public class Hunter
         this.hunterName = hunterName;
         kit = "";
         gold = startingGold;
+
+        a = new Treasure();
     }
 
     //Accessors
@@ -70,6 +73,11 @@ public class Hunter
         }
 
         gold -= costOfItem;
+        addItem(item);
+        return true;
+    }
+
+    public boolean getTreasure(String item) {
         addItem(item);
         return true;
     }
