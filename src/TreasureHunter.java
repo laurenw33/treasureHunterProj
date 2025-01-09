@@ -95,6 +95,10 @@ public class TreasureHunter
         return regularMode;
     }
 
+    public boolean isCrazyMode() {
+        return crazy;
+    }
+
     /**
      * Creates a new town and adds the Hunter to it.
      */
