@@ -9,6 +9,7 @@ public class Treasure {
 
 
     private Hunter inv;
+    private Town currentTown;
 
     public Treasure() {
         this.aTreasure = 0;
@@ -24,15 +25,16 @@ public class Treasure {
 
     public boolean lookingForTreasure() {
 
+        double chance = Math.random();
+        chance += currentTown.getPercent();
 
-        int chance = (int) (1 + Math.random() * 2);
-        if (chance == 1) {
+        if (chance < 0.5) {
 
             treasureFound = false;
 
         }
 
-        if (chance == 2) {
+        if (chance >= 0.5) {
 
             treasureFound = true;
             t++;
