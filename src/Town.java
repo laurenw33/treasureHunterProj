@@ -13,6 +13,9 @@ public class Town
     private boolean regularTown;
     private boolean toughTown;
     private boolean crazyTown;
+    private int totalCasino;
+    private static int count;
+    private double percent;
 
     //Constructor
     /**
@@ -216,26 +219,46 @@ public class Town
         return (rand < 0.5);
     }
 
-    public void casino(int n, int amt) {
+    public String LuckyDice(int n, int amt) {
             int one = (int) ((Math.random() * 6) + 1);
             int two = (int) ((Math.random() * 6) + 1);
             int num = one + two;
 
             if (num == n) {
                 amt *= 2;
-                System.out.println("Your gold has been doubled!");
                 hunter.changeGold(amt);
+                totalCasino += amt;
+                return "You guessed correctly. Your gold has been doubled!";
             }
 
             else if (Math.abs(num - n) == 2) {
-                System.out.println("Your number was " + num);
-                System.out.println("You were two away from the roll!");
+                hunter.changeGold(amt);
+                totalCasino += amt;
+                return "Your number was " + num + "\nYou got back the gold you wagered!";
             }
 
             else if (Math.abs(num - n) > 2) {
-                hunter.updateGold(0);
-                System.out.println("Your number was " + num);
-                System.out.println("You lost all your gold!");
+                hunter.changeGold(-amt);
+                return "Your number was " + num + "\nYou lost all your gold!";
             }
+
+            if (amt == 10) {
+                count++;
+            }
+            else if (amt == -10) {
+                count--;
+            }
+            return "Error!";
+        }
+
+        public int Luck() {
+            int luck = count * 2;
+            double modifier = 1.01;
+            percent = count * modifier;
+            return luck;
+        }
+
+        public double getPercent() {
+            return percent;
         }
     }
