@@ -213,7 +213,16 @@ public class TreasureHunter
         else if (choice.equalsIgnoreCase("c")) {
             int n = hunter.getGold();
             if (n > 1) {
-                currentTown.casino();
+                System.out.print("Wager some gold! ");
+                int amt = scanner.nextInt();
+                if (amt > hunter.getGold()) {
+                    System.out.println("You do not have enough gold! You have " + hunter.getGold() + " gold.");
+                }
+                else {
+                    System.out.print("Please choose a number between 1-12. ");
+                    int num = scanner.nextInt();
+                    currentTown.casino(num, amt);
+                }
             }
             else {
                 System.out.println("You do not have enough money!");

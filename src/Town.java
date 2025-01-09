@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * The Town Class is where it all happens.
  * The Town is designed to manage all of the things a Hunter can do in town.
@@ -212,31 +210,26 @@ public class Town
         return (rand < 0.5);
     }
 
-    public void casino() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Wager some gold! ");
-        int amt = scanner.nextInt();
-        if (amt > hunter.getGold()) {
-            System.out.println("You do not have enough gold! You have " + hunter.getGold() + " gold.");
-        } else {
-            System.out.print("Please choose a number between 1-12. ");
-            int n = scanner.nextInt();
+    public void casino(int n, int amt) {
             int one = (int) ((Math.random() * 6) + 1);
             int two = (int) ((Math.random() * 6) + 1);
             int num = one + two;
+
             if (num == n) {
                 amt *= 2;
                 System.out.println("Your gold has been doubled!");
                 hunter.changeGold(amt);
-            } else if (Math.abs(num - n) == 2) {
+            }
+
+            else if (Math.abs(num - n) == 2) {
                 System.out.println("Your number was " + num);
                 System.out.println("You were two away from the roll!");
-            } else if (Math.abs(num - n) > 2) {
+            }
+
+            else if (Math.abs(num - n) > 2) {
                 hunter.updateGold(0);
                 System.out.println("Your number was " + num);
                 System.out.println("You lost all your gold!");
             }
         }
     }
-}
