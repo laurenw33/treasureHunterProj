@@ -8,8 +8,6 @@ public class Treasure {
     private boolean treasureFound;
 
 
-    private Town currentTown;
-
     public Treasure() {
         this.aTreasure = 0;
         this.bTreasure = 0;
@@ -27,7 +25,7 @@ public class Treasure {
     public boolean lookingForTreasure() {
 
         double chance = Math.random();
-        chance += currentTown.getPercent();
+
 
         if (chance < 0.5) {
 
